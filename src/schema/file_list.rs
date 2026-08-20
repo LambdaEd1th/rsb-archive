@@ -68,7 +68,7 @@ pub fn write_file_list<P: FileListPayload + Clone, W: Write + Seek>(
 
     let mut sorted_items = items.to_vec();
 
-    sorted_items.sort_by(|a, b| a.0.to_uppercase().cmp(&b.0.to_uppercase()));
+    sorted_items.sort_by_key(|item| item.0.to_uppercase());
 
     // Track active prefix states: (Path, FilePositionOfOffsetField)
     // The FilePositionOfOffsetField is where we wrote the 0 that we need to update later.

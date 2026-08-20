@@ -410,7 +410,7 @@ const fn create_encoding(mut max_val: u32) -> IntegerEncoding {
         }
 
         // Is max_val of the type 3*2^n - 1?
-        if (check % 3 == 0) && ((check / 3) & ((check / 3) - 1)) == 0 {
+        if check.is_multiple_of(3) && ((check / 3) & ((check / 3) - 1)) == 0 {
             return IntegerEncoding {
                 encoding: IntegerEncodingType::Trit,
                 num_bits: (check / 3 - 1).count_ones(),
@@ -418,7 +418,7 @@ const fn create_encoding(mut max_val: u32) -> IntegerEncoding {
         }
 
         // Is max_val of the type 5*2^n - 1?
-        if (check % 5 == 0) && ((check / 5) & ((check / 5) - 1)) == 0 {
+        if check.is_multiple_of(5) && ((check / 5) & ((check / 5) - 1)) == 0 {
             return IntegerEncoding {
                 encoding: IntegerEncodingType::Quint,
                 num_bits: (check / 5 - 1).count_ones(),

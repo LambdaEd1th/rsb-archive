@@ -82,12 +82,12 @@ fn encode_block(
         .min_by(|left, right| left.error.total_cmp(&right.error))
         .expect("a non-constant ASTC block has a usable direction");
 
-    if effort >= 35 && alpha_varies(pixels) {
-        if let Some(dual) = encode_dual_plane_candidate(pixels, block_width, block_height, effort) {
-            if dual.error < best.error {
-                best = dual;
-            }
-        }
+    if effort >= 35
+        && alpha_varies(pixels)
+        && let Some(dual) = encode_dual_plane_candidate(pixels, block_width, block_height, effort)
+        && dual.error < best.error
+    {
+        best = dual;
     }
 
     best.data
