@@ -29,7 +29,7 @@ Toolkit UI, a CLI, or an aggregate SDK.
 
 ```toml
 [dependencies]
-rsb-archive = { git = "https://github.com/LambdaEd1th/ed1ths-pvz-toolkit" }
+rsb-archive = { git = "https://github.com/LambdaEd1th/rsb-archive" }
 ```
 
 ASTC and PVRTC decoding and encoding are implemented in pure Rust. They do not
@@ -44,7 +44,7 @@ separate renderer crate:
 ```toml
 [dependencies]
 rsb-archive = {
-    git = "https://github.com/LambdaEd1th/ed1ths-pvz-toolkit",
+    git = "https://github.com/LambdaEd1th/rsb-archive",
     features = ["gpu"],
 }
 ```
@@ -305,4 +305,4 @@ The PvZ2 China PTX format codes follow Twinning's conversion map:
 
 ## License
 
-AGPL-3.0-or-later. See the [workspace LICENSE](../../../LICENSE).
+AGPL-3.0-or-later. See [LICENSE](LICENSE).

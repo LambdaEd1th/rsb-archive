@@ -6,8 +6,8 @@ rust-version = "1.88"
 authors = ["ed1th"]
 categories = ["encoding", "parser-implementations"]
 readme = "README.md"
-license.workspace = true
-repository.workspace = true
+license = "AGPL-3.0-or-later"
+repository = "https://github.com/LambdaEd1th/rsb-archive"
 description = "Reader, writer, and texture codec support for PopCap/PvZ2 RSB bundles"
 
 [features]
@@ -16,17 +16,20 @@ gpu = ["dep:bytemuck", "dep:futures-channel", "dep:wgpu"]
 
 [dependencies]
 byteorder = "1.5"
-bytemuck = { workspace = true, optional = true }
+bytemuck = { version = "1.24", features = ["derive"], optional = true }
 flate2 = "1.1"
-futures-channel = { workspace = true, optional = true }
+futures-channel = { version = "0.3", optional = true }
 image = { version = "0.25", default-features = false }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 thiserror = "2"
-wgpu = { workspace = true, optional = true }
+wgpu = { version = "30", features = ["webgl"], optional = true }
 
 [dev-dependencies]
 serde_json = "1.0"
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
 pollster = "1"
+
+[package.metadata.docs.rs]
+all-features = true
