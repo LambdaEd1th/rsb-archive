@@ -22,9 +22,7 @@ pub fn decode_astc_rgba8(
     let footprint = Footprint::new(block_width, block_height);
     let mut image = RgbaImage::new(width, height);
     let blocks_x = width.div_ceil(block_width);
-    for (block_index, bytes) in data.chunks_exact(16).enumerate() {
-        let block = <&[u8; 16]>::try_from(bytes)
-            .expect("chunks_exact always yields one complete ASTC block");
+    for (block_index, block) in data.as_chunks::<16>().0.iter().enumerate() {
         let block_x = block_index as u32 % blocks_x;
         let block_y = block_index as u32 / blocks_x;
         let valid = astc_decode_block(block, footprint, |x, y, color| {
